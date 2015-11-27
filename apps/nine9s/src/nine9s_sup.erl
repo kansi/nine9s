@@ -15,6 +15,9 @@
 
 -define(SERVER, ?MODULE).
 
+-define(CHILD(Id, Mod, Args, Restart, Type), {Id, {Mod, start_link, Args},
+                                              Restart, 60000, Type, [Mod]}).
+
 
 %%====================================================================
 %% API functions
@@ -29,7 +32,8 @@ start_link() ->
 
 %% Child :: {Id,StartFunc,Restart,Shutdown,Type,Modules}
 init([]) ->
-    {ok, { {one_for_all, 0, 1}, []} }.
+    State_Handler = ?CHILD(state_handler, state_handler, [], transient, worker),
+    {ok, { {one_for_all, 0, 1}, [State_Handler]} }.
 
 
 %%====================================================================
