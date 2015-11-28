@@ -1,24 +1,24 @@
 {"0.2.0",
  [{"0.1.0", [
-             {add_module, state_handler},
-             {update, nine9s_sup, supervisor},
-             {apply, {supervisor, restart_child, [nine9s_sup, state_handler]}},
-             {load_module, default_handler}
+             {add_module, state_handler}
+            ,{update, nine9s_sup, supervisor}
+            ,{apply, {supervisor, restart_child, [nine9s_sup, state_handler]}}
+            ,{load_module, default_handler}
 
-             {add_module, count_handler},
-             {load_module, nine9s_app},
-             {apply, {nine9s_app, set_routes_new, [] }}
+            ,{add_module, count_handler}
+            ,{load_module, nine9s_app}
+            ,{apply, {nine9s_app, set_routes_new, [] }}
             ]
   }],
  [{"0.1.0", [
              {load_module, default_handler}
-             {apply, {supervisor, terminate_child, [nine9s_sup, state_handler]}},
-             {apply, {supervisor, delete_child, [nine9s_sup, state_handler]}},
-             {update, nine9s_sup, supervisor},
-             {delete_module, state_handler},
+            ,{apply, {supervisor, terminate_child, [nine9s_sup, state_handler]}}
+            ,{apply, {supervisor, delete_child, [nine9s_sup, state_handler]}}
+            ,{update, nine9s_sup, supervisor}
+            ,{delete_module, state_handler}
 
-             {apply, {nine9s_app, set_routes_old, [] }},
-             {delete_module, count_handler},
-             {load_module, nine9s_app}
+            ,{apply, {nine9s_app, set_routes_old, [] }}
+            ,{delete_module, count_handler}
+            ,{load_module, nine9s_app}
             ]
   }]}.
