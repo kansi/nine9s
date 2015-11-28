@@ -5,7 +5,7 @@
              {apply, {supervisor, restart_child, [nine9s_sup, state_handler]}},
              {load_module, default_handler}
 
-             {load_module, count_handler},
+             {add_module, count_handler},
              {load_module, nine9s_app},
              {apply, {nine9s_app, set_routes_new, [] }}
             ]
