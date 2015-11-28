@@ -6,7 +6,8 @@
              {load_module, default_handler}
 
              {load_module, count_handler},
-             {apply, {nine9s_app, set_routes_new, [] }},
+             {load_module, nine9s_app},
+             {apply, {nine9s_app, set_routes_new, [] }}
             ]
   }],
  [{"0.1.0", [
@@ -17,6 +18,7 @@
              {delete_module, state_handler},
 
              {apply, {nine9s_app, set_routes_old, [] }},
-             {delete_module, count_handler}
+             {delete_module, count_handler},
+             {load_module, nine9s_app}
             ]
   }]}.
